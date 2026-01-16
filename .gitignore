@@ -1,0 +1,46 @@
+node_modules
+.DS_Store
+.env
+/dist
+/out
+/build
+node_modules/
+dist/
+dist-electron/
+*.log
+.DS_Store
+.env
+.env.local
+.env.production.local
+.env.development.local
+.env.test.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+Thumbs.db
+
+# Build
+out/
+build/
+*.dmg
+*.zip
+*.exe
+*.deb
+*.AppImage
+
+# Local config
+electron-builder.yml

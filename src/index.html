@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nova Browser</title>
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:#0b0c10; color:#e6e6e6; }
+      header { display:flex; align-items:center; gap:8px; padding:8px 12px; background:#111217; border-bottom:1px solid #23242a; }
+      header img { width:24px; height:24px; }
+      #omnibox { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #2a2c36; background:#0e0f14; color:#e6e6e6; }
+      #content { display:grid; grid-template-columns: 1fr 360px; height: calc(100vh - 48px); }
+      #webview { width:100%; height:100%; border:0; background:#111; }
+      #ai { border-left:1px solid #23242a; display:flex; flex-direction:column; }
+      #ai header { background:#0e0f14; border-bottom:1px solid #23242a; }
+      #ai-log { flex:1; overflow:auto; padding:12px; }
+      .msg { padding:8px 10px; background:#141620; border:1px solid #23242a; border-radius:8px; margin-bottom:8px; }
+      #ai form { display:flex; gap:8px; padding:8px; border-top:1px solid #23242a; }
+      #ai input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #2a2c36; background:#0e0f14; color:#e6e6e6; }
+  #ai button, #go, .btn { padding:8px 12px; border-radius:8px; border:1px solid #2a2c36; background:#1b1d28; color:#e6e6e6; cursor:pointer; }
+  #audit { margin-left:auto; }
+      #tabs { display:flex; gap:6px; padding:6px 8px; border-bottom:1px solid #23242a; background:#0d0e13; }
+      .tab { padding:6px 10px; border-radius:8px; background:#151723; border:1px solid #23242a; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="../logo.png" alt="Nova" />
+      <div id="tabs"></div>
+      <input id="omnibox" placeholder="Search Google or type a URL" />
+  <button id="go">Go</button>
+  <button id="importChrome" class="btn" title="Import from Chrome profile">Import</button>
+  <button id="exportData" class="btn" title="Export bookmarks JSON">Export</button>
+    </header>
+    <div id="content">
+  <webview id="webview" src="https://www.google.com" title="Main browsing view" disableblinkfeatures="Translate" allowpopups></webview>
+      <aside id="ai">
+        <header>
+          <strong>AI Assistant</strong>
+          <button id="audit" title="View audit log">Audit</button>
+        </header>
+        <div id="ai-log"></div>
+        <form id="ai-form">
+          <input id="ai-input" placeholder="Ask about this page…" />
+          <button type="submit">Ask</button>
+        </form>
+      </aside>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>
